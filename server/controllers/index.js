@@ -17,7 +17,10 @@ module.exports.processLoginPage = (req, res, next) => {
     }
     // is there a user login error?
     if (!user) {
-      return res.json({ success: false, msg: "ERROR: Failed to Log In User." });
+      return res.json({
+        success: false,
+        msg: "ERROR: Failed to Log In User."
+      });
     }
     req.logIn(user, err => {
       // server error?
@@ -70,12 +73,18 @@ module.exports.processRegisterPage = (req, res, next) => {
         msg: "ERROR: Failed to Register User."
       });
     } else {
-      return res.json({ success: true, msg: "User Registered Successfully!" });
+      return res.json({
+        success: true,
+        msg: "User Registered Successfully!"
+      });
     }
   });
 };
 
 module.exports.performLogout = (req, res, next) => {
   req.logout();
-  res.json({ success: true, msg: "User Successfully Logged Out!" });
+  res.json({
+    success: true,
+    msg: "User Successfully Logged Out!"
+  });
 };
