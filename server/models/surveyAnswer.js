@@ -5,6 +5,7 @@ let mongoose = require("mongoose");
 let answerSchema = mongoose.Schema(
   {
     user_id : String,
+    username : String,
     question_id : String,
     data : String
   },

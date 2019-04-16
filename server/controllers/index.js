@@ -22,7 +22,6 @@ module.exports.processLoginPage = (req, res, next) => {
         msg: "ERROR: Failed to Log In User."
       });
     }
-
     req.logIn(user, err => {
       // server error?
       if (err) {

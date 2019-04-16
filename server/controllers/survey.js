@@ -21,6 +21,7 @@ module.exports.displayQuestionList = (req, res, next) => {
 //Add questions to the DB
 module.exports.processAddQuestion = (req, res, next) => {
     let newQuestion = questionModel({
+      username : req.body.username,
       user_id: req.body.user_id,
       data: req.body.data
     });
@@ -38,6 +39,7 @@ module.exports.processAddQuestion = (req, res, next) => {
   //Add answer to DB
   module.exports.processAddAnswer = (req, res, next) => {
     let newAnswer = answerModel({
+      username : req.body.username,
       user_id: req.body.user_id,
       question_id : req.body.question_id,
       data: req.body.data
@@ -59,11 +61,13 @@ module.exports.processAddQuestion = (req, res, next) => {
   
     let updatedQuestion = questionModel({
       _id: id,
+      username: req.body.username,
       user_id: req.body.user_id,
-      data: req.body.data
+      data: req.body.data,
+      lifetime: req.body.lifetime
     });
   
-    contactModel.update({ _id: id }, updatedQuestion, err => {
+    questionModel.update({ _id: id }, updatedQuestion, err => {
       if (err) {
         console.log(err);
         res.end(err);
@@ -71,7 +75,7 @@ module.exports.processAddQuestion = (req, res, next) => {
         res.json({
           success: true,
           msg: "Successfully Edited Question",
-          Question: updatedQuestion
+          question : updatedQuestion
         });
       }
     });
@@ -81,7 +85,7 @@ module.exports.processAddQuestion = (req, res, next) => {
   module.exports.displayEditQuestionPage = (req, res, next) => {
     let id = req.params.id;
   
-    contactModel.findById(id, (err, questionObject) => {
+    questionModel.findById(id, (err, questionObject) => {
       if (err) {
         console.log(err);
         res.end(err);
@@ -97,7 +101,6 @@ module.exports.processAddQuestion = (req, res, next) => {
   // Delete specific survey or question
   module.exports.performQuestionDelete = (req, res, next) => {
     let id = req.params.id;
-  
     questionModel.remove({ _id: id }, err => {
       if (err) {
         console.log(err);
@@ -107,3 +110,26 @@ module.exports.processAddQuestion = (req, res, next) => {
       }
     });
   };
+
+  module.exports.findSpecificQuestion= (req, res, next) =>{
+    let id = req.params.id;
+    questionModel.findById(id,(err,question)=>{
+      if (err) {
+        console.log(err);
+        res.end(err);
+      } else {
+        res.json({ success: true, msg: "Successfully Displayed One Question", question });
+      }
+    });
+  }
+
+  module.exports.findAnswersBySpecificQuestion= (req, res, next) =>{
+    let id = req.params.id;
+    answerModel.find({'question_id' : id},(err, answerList) => {
+      if (err) {
+        return console.error(err);
+      } else {
+        res.json({ success: true, answerList: answerList});
+      }
+    });
+  }

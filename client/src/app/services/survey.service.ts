@@ -50,7 +50,7 @@ export class SurveyService {
   //The post request for edit question
   public editQuestion(question: SurveyQuestion): Observable<any> {
     return this.http.post<any>(
-      this.endpoint + "editquestion",
+      this.endpoint + "editquestion/"+question._id,
       question,
       this.httpOptions
     );
@@ -59,6 +59,16 @@ export class SurveyService {
   //The get request for edit question page
   public getEditQuestionPage(question: SurveyQuestion): Observable<any> {
     return this.http.get<any>(this.endpoint + question._id, this.httpOptions);
+  }
+
+  //This get the specific question from id
+  public getSpecificQuestion(question: SurveyQuestion): Observable<any> {
+    return this.http.get<any>(this.endpoint + "question/" + question._id, this.httpOptions);
+  }
+
+  //Get the result of question and list of answers
+  public getResultOfAnswers(question: SurveyQuestion): Observable<any> {
+    return this.http.get<any>(this.endpoint + "answers/" + question._id, this.httpOptions);
   }
 
   //This Method Deletes Question

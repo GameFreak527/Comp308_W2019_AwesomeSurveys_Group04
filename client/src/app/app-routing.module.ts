@@ -8,6 +8,10 @@ import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.com
 import { RegisterComponent } from "./pages/register/register.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { CreateComponent } from './pages/create/create.component';
+import { ResultsComponent } from './pages/results/results.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { AnswerComponent } from './pages/answer/answer.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent, data: { title: "Home" } },
@@ -20,6 +24,14 @@ const routes: Routes = [
   },
   { path: "login", component: LoginComponent, data: { title: "Register" } },
   { path: "logout", redirectTo: "/login", pathMatch: "full" },
+
+  { path: "create", component: CreateComponent, data: { title: "Create A Survey"}},
+  { path: "edit/:id", component: EditComponent, data: { title: "Edit Your Survey"}},
+
+  { path: "answer/:id", component: AnswerComponent, data: { title: "Enter your Answer"}},
+
+  { path: "results/:id", component: ResultsComponent, data: {title: "Here are the Results!"}},
+
 
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
