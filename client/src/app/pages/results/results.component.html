@@ -1,23 +1,24 @@
-<div class="container">
-        <div class="column">
+<div class="container" id="print-section">
+  <div class="column">
     <h1> <span class="badge badge-danger">{{questionObj.data}}</span></h1>
     <div class="alert alert-info" role="alert">
-            This Survey question is posted by <strong>{{questionObj.username}}</strong>
-          </div>
+      This Survey question is posted by <strong>{{questionObj.username}}</strong>
+    </div>
     <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Answers</th>
-                <th scope="col">UserName</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let answer of ansList">
-                <td >{{answer.data}}</td>
-                <td *ngIf="answer.user_id == null">Guest</td>
-                <td *ngIf="answer.user_id != null"> {{answer.username}}</td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
-    </div>
+      <thead>
+        <tr>
+          <th scope="col">Answers</th>
+          <th scope="col">UserName</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let answer of ansList">
+          <td>{{answer.data}}</td>
+          <td *ngIf="answer.user_id == null">Guest</td>
+          <td *ngIf="answer.user_id != null"> {{answer.username}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <input type="button" class="btn btn-success" value="Print Results" (click)="printResults()" />
+  </div>
+</div>
