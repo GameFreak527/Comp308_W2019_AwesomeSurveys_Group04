@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        <h1>Edit Your Survey Question!</h1>
+        <form>
+            <fieldset class="form-group">
+                <label for="questionTitle">This is the title</label>
+                <input type="text" class="form-control" 
+                [(ngModel)]="questionObj.data" 
+                name="question"
+                id="question"
+                required autocomplete="off">
+              </fieldset>
+                <fieldset class="form-group text-right">
+                      <input type="button" class="btn btn-success" value="Edit!" (click)="onQuestionSubmit()">
+                      <a routerLink="/survey">
+                        <input type="button" class="btn btn-warning" value="Cancel">
+                      </a>
+                </fieldset>
+          </form>
+        </div>
+      </div>
+   

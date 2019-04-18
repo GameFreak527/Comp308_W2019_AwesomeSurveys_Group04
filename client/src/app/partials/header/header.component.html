@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <a class="navbar-brand" routerLink="/"><img src="assets/images/awesomeLogo.png"
+    alt="Awesome Surveys" style="width: 100px; height: 100px;"><strong>Awesome Surveys</strong></a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/home"
+          ><i class="fas fa-home"></i> Home
+      </a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/survey"
+          ><i class="fas fa-poll"></i> Survey</a
+        >
+      </li>
+      <li *ngIf="isLoggedIn()" class="navbar-text ml-5 mr-5 d-none d-lg-inline text-white"><i class="fas fa-lg fa-user"></i>
+        Welcome, {{ user.displayName }}</li>
+
+      <li *ngIf="isLoggedIn()" class="nav-item"><a (click)="onLogoutClick()" routerLink="/logout" class="nav-link text-white">
+        <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a></li>
+
+      <li *ngIf="!isLoggedIn()" class="nav-item"><a routerLink="/login" class="nav-link text-white">
+        <i class="fas fa-lg fa-sign-in-alt"></i> Login</a></li>
+
+        <li *ngIf="!isLoggedIn()" class="nav-item"><a routerLink="/register" class="nav-link text-white">
+          <i class="far fa-registered"></i> Register</a> </li>
+
+
+    </ul>
+  </div>
+</nav>
