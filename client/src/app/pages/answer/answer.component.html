@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <form>
+                <fieldset class="form-group">
+                    <label for="questionTitle">{{questionObj.data}}</label>
+                    <input type="text" class="form-control" 
+                    [(ngModel)]="answerObj.data" 
+                    name="answer"
+                    placeholder="Enter your choice of answer"
+                    id="answer"
+                    required autocomplete="off">
+                  </fieldset>
+                    <fieldset class="form-group text-right">
+                          <input type="button" class="btn btn-success" value="Submit!" (click)="onAnswerSubmit()">
+                          <a routerLink="/survey">
+                            <input type="button" class="btn btn-warning" value="Cancel">
+                          </a>
+                    </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+       

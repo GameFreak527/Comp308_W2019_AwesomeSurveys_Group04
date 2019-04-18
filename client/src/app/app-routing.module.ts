@@ -14,6 +14,8 @@ import { ResultsComponent } from "./pages/results/results.component";
 import { EditComponent } from "./pages/edit/edit.component";
 import { DeleteQuestionsComponent } from "./pages/delete-questions/delete-questions.component";
 
+import { AnswerComponent } from "./pages/answer/answer.component";
+
 const routes: Routes = [
   { path: "home", component: HomeComponent, data: { title: "Home" } },
   // {path: "survey",component: SurveyComponent,data: { title: "Survey" },canActivate: [AuthGuard]},
@@ -50,6 +52,28 @@ const routes: Routes = [
   },
   {
     path: "results",
+    component: ResultsComponent,
+    data: { title: "Here are the Results!" }
+  },
+  {
+    path: "create",
+    component: CreateComponent,
+    data: { title: "Create A Survey" }
+  },
+  {
+    path: "edit/:id",
+    component: EditComponent,
+    data: { title: "Edit Your Survey" }
+  },
+
+  {
+    path: "answer/:id",
+    component: AnswerComponent,
+    data: { title: "Enter your Answer" }
+  },
+
+  {
+    path: "results/:id",
     component: ResultsComponent,
     data: { title: "Here are the Results!" }
   },
