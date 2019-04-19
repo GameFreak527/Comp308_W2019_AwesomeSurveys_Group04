@@ -31,18 +31,21 @@ const routes: Routes = [
   {
     path: "create",
     component: CreateComponent,
-    data: { title: "Create A Survey" }
+    data: { title: "Create A Survey" },
+    canActivate: [AuthGuard]
   },
   {
     path: "edit/:id",
     component: EditComponent,
-    data: { title: "Edit Your Survey" }
+    data: { title: "Edit Your Survey" },
+    canActivate: [AuthGuard]
   },
 
   {
     path: "delete/:id",
     component: DeleteQuestionsComponent,
-    data: { title: "You have deleted" }
+    data: { title: "You have deleted" },
+    canActivate: [AuthGuard]
   },
 
   {
@@ -58,12 +61,14 @@ const routes: Routes = [
   {
     path: "create",
     component: CreateComponent,
-    data: { title: "Create A Survey" }
+    data: { title: "Create A Survey" },
+    canActivate: [AuthGuard]
   },
   {
     path: "edit/:id",
     component: EditComponent,
-    data: { title: "Edit Your Survey" }
+    data: { title: "Edit Your Survey" },
+    canActivate: [AuthGuard]
   },
 
   {
