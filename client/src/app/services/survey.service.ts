@@ -14,7 +14,7 @@ export class SurveyService {
   private authToken: any = null;
 
   //private endpoint = "http://localhost:3000/api/survey/";
-  private endpoint = "http://awesomesurveys.herokuapp.com/api/survey/";
+  private endpoint = "https://awesomesurveys.herokuapp.com/api/survey/";
 
   private httpOptions = {
     headers: new HttpHeaders({
