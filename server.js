@@ -4,6 +4,14 @@
  * Module dependencies.
  */
 
+ /**
+  * Web App Name: Awesome Surveys!
+  * Group Members: Shiv Rana 300990505
+  * Gabriel Norman 300897331
+  * Ryan Sterling 300509648
+  * Nusrat Jahan 300967157
+  * Description: A web app that allows users to take surveys
+  */
 let app = require("./server/config/app");
 let debug = require("debug")("awesome-surveys:server");
 let http = require("http");

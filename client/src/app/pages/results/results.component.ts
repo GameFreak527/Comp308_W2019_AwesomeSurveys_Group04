@@ -44,12 +44,13 @@ export class ResultsComponent implements OnInit {
   printResults(): void {
     let printContents, popupWin;
     printContents = document.getElementById("print-section").innerHTML;
-    popupWin = window.open("", "_blank", "top=0,left=0,height=100%,width=auto");
+    popupWin = window.open("", "new div", "height=400,width=600");
     popupWin.document.open();
     popupWin.document.write(`
       <html>
         <head>
           <title>Print tab</title>
+       <link rel="stylesheet" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"  type="text/css" media="all">
         </head>
     <body onload="window.print();window.close()">${printContents}</body>
       </html>`);
