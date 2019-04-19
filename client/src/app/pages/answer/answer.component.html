@@ -1,8 +1,9 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-offset-4 col-md-4">
+    <div class="column">
+        <div class="col-md-offset-1 col-md-8">
             <form>
                 <fieldset class="form-group">
+                  <h1>{{questionObj.data}}</h1>
                     <label for="questionTitle">{{questionObj.data}}</label>
                     <input type="text" class="form-control" 
                     [(ngModel)]="answerObj.data" 

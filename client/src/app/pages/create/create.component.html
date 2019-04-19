@@ -1,5 +1,6 @@
+<div class="container">
 <div class="row">
-    <div class="col-md-offset-4 col-md-4">
+    <div class="col-md-offset-1 col-md-8">
         <h1>Create Your Survey!</h1>
         <form>
             <fieldset class="form-group">
@@ -9,15 +10,23 @@
                 name="question"
                 placeholder="Enter your survey question"
                 id="question"
-                required autocomplete="off">
+                required autocomplete="off"
+                >
+              </fieldset>
+              <fieldset>
+                  <label for="validity" style="margin-right: 20px">Please select the validity days</label>
+                <select [(ngModel)]="selectedOption"  name="dropOptions">
+                  <option *ngFor="let option of dropDownOptions">{{option}}</option>
+                </select>
               </fieldset>
                 <fieldset class="form-group text-right">
                       <input type="button" class="btn btn-success" value="finished!" (click)="onQuestionSubmit()">
-                      <a routerLink="/survey">
+                      <a [routerLink]="['/survey']">
                         <input type="button" class="btn btn-warning" value="Cancel">
                       </a>
                 </fieldset>
           </form>
         </div>
       </div>
+    </div>
    

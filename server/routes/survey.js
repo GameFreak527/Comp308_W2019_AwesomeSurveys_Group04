@@ -7,7 +7,7 @@ router.post("/addquestion", surveyController.processAddQuestion);
 
 router.post("/addanswer", surveyController.processAddAnswer);
 
-router.get("/:id", surveyController.performQuestionDelete);
+router.get("/delete/:id", surveyController.performQuestionDelete);
 
 
 router.post("/editquestion/:id", surveyController.processEditQuestionPage);

@@ -63,7 +63,7 @@ export class SurveyService {
 
   //This Method Deletes Question
   public deleteQuestion(question: SurveyQuestion): Observable<any> {
-    return this.http.get<any>(this.endpoint + question._id, this.httpOptions);
+    return this.http.get<any>(this.endpoint + "delete/"+ question._id, this.httpOptions);
   }
 
   //This get the specific question from id

@@ -11,14 +11,13 @@ import { SurveyQuestion } from 'src/app/models/survey-question';
 export class SurveyComponent implements OnInit {
   public questionsList :SurveyQuestion[]; 
   private userId : any;
+  public todayDate : number
 
   constructor(private authService: AuthService, private surveyService : SurveyService) {
     this.questionsList = new Array<SurveyQuestion>();
     if(this.isLoggedIn()){
       this.userId = (JSON.parse(localStorage.getItem('user'))["id"]);
     }
-    
-    
   }
 
   ngOnInit() {
@@ -27,7 +26,9 @@ export class SurveyComponent implements OnInit {
         this.questionsList = data.questionList;
         console.log(this.questionsList);
       }
-    })
+    });
+    this.todayDate = Date.now().valueOf();
+    console.log(this.todayDate);
   }
 
   isLoggedIn(): boolean {

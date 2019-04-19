@@ -47,6 +47,7 @@ export class EditComponent implements OnInit {
     this.surveyService.getEditQuestionPage(this.questionObj).subscribe(data=>{
       if(data.success){
         this.questionObj = data.question;
+        console.log(data.question);
         
       }
       else{

@@ -27,7 +27,8 @@ module.exports.processAddQuestion = (req, res, next) => {
   let newQuestion = questionModel({
     username: req.body.username,
     user_id: req.body.user_id,
-    data: req.body.data
+    data: req.body.data,
+    lifetime : req.body.lifetime
   });
 
   questionModel.create(newQuestion, (err, questionModel) => {

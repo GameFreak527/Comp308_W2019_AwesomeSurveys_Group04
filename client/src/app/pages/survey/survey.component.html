@@ -1,46 +1,51 @@
-<div class="row">
-  <div class="col-md-offset-3 col-md-6">
-    <h1>Check out some of these Surveys!</h1>
-    <a class="btn btn-primary" routerLink="/create" role="button">
-      <i class="fas fa-plus-circle"></i> Create a new survey</a>
-    <br>
-    <table class="table table-bordered table-striped table-hover">
-      <!-- Header Row-->
-      <tr>
-        <th class="text-center">Author</th>
-        <th class="text-center">Survey title</th>
-
-        <th class="text-center"></th>
-        <th class="text-center"></th>
-      </tr>
-
-      <!-- Repeatable Template Row -->
-      <tr *ngFor="let questions of questionsList">
-        <!-- backend method needs to be applied-->
-        <td class="text-center">{{ questions.username }}</td>
-        <td class="text-center">{{ questions.data }}</td>
-
-
-        <td class="text-center" *ngIf="questions.user_id == userId">
-          <a routerLink="/edit/{{ questions._id }}" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit</a>
-        </td>
-
-        <td class="text-center" *ngIf="questions.user_id == userId">
-          <a routerLink="/delete/{{ questions._id }}" (click)="onDeleteClick()" class="btn btn-danger"><i
-              class="fas fa-trash-alt"></i> Delete</a>
-        </td>
-
-        <td class="text-center">
-          <a routerLink="/results/{{ questions._id }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
-            Result</a>
-        </td>
-
-        <td class="text-center">
-          <a routerLink="/answer/{{ questions._id }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Answer</a>
-        </td>
-      </tr>
-
-    </table>
-
+<div class="container" >
+  <div class="column" >
+          <div>
+              <h1>Check out some of these Surveys!</h1>
+              <a class="btn btn-primary" routerLink="/create" role="button" *ngIf="isLoggedIn()">
+              <i class="fas fa-plus-circle"></i> Create a new survey</a>
+              <br>
+              <table class="table table-bordered table-striped table-hover" style="margin-top: 20px">
+                  <!-- Header Row-->
+                  <tr>
+                      <th class="text-center">Author</th>
+                      <th class="text-center">Survey title</th>
+                      
+                      <th class="text-center"></th>
+                      <th class="text-center"></th>
+                  </tr>
+    
+                  <!-- Repeatable Template Row -->
+                      <tr *ngFor="let questions of questionsList"><!-- backend method needs to be applied-->
+                          <td class="text-center" *ngIf="todayDate <= questions.lifetime">{{ questions.username }}</td>
+                          <td class="text-center" *ngIf="todayDate <= questions.lifetime">{{ questions.data }}</td>
+                          
+    
+                          <td class="text-center" *ngIf="questions.user_id == userId && todayDate <= questions.lifetime">
+                          <a routerLink="/edit/{{ questions._id }}"
+                              class="btn btn-warning"><i class="fas fa-pencil-alt"></i> Edit</a>
+                          </td>
+    
+                          <td class="text-center" *ngIf="questions.user_id == userId && todayDate <= questions.lifetime">
+                                  <a routerLink="/delete/{{ questions._id }}"
+                                      class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                  </td>
+  
+                          <td class="text-center" *ngIf="todayDate <= questions.lifetime">
+                                      <a routerLink="/answer/{{ questions._id }}"
+                                          class="btn btn-success"><i class="fas fa-plus"></i> Answer</a>
+                                  </td>
+  
+                          <td class="text-center" *ngIf="todayDate <= questions.lifetime">
+                                      <a routerLink="/results/{{ questions._id }}"
+                                          class="btn btn-info"><i class="fas fa-file-export"></i> Result</a>
+                                  </td>
+  
+                          
+                      </tr>
+                      
+              </table>
+    
+          </div>
+      </div>
   </div>
-</div>

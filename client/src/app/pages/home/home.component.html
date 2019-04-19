@@ -1,27 +1,21 @@
-<h2>Welcome to Awesome Surveys!</h2>
-<div class="col-md-offset-4 col-md-4">
-    <h1>
-        Would you like to Create a Survey?
-        <a router-link="/create" href="/create">
-            <input type="button" class="btn btn-success" value="login here!">
-        </a>
-    </h1>
-</div>
-
-<div class="col-md-offset-4 col-md-4">
-        <h1>
-            Complete a Survey?
-            <a router-link="/questions" href="/questions">
-                <input type="button" class="btn btn-success" value="Questions here!">
-            </a>
-        </h1>
+<div class="container">
+    <div class="column" style="margin-top: 20px">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                          <img src="/assets/images/home.png" class="d-block w-25" alt="Take our survey">
+                          <h4>Awesome Survey is platform where you can create your survey question and ask your friends to give the answer.</h4>
+                      </div>
+                  </div>
+                  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="margin-top: 100px">
+                        <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                        <img src="/assets/images/registration.jpg" class="d-block w-25" alt="Registration" class="float-right">
+                                        <h4>You can register yourself and create your own survey and it will provide some other special features that i only available for the registered users. 
+                                                <button type="button" class="btn btn-info"> <i class="far fa-address-card"></i> Register Yourself !</button>
+                                        </h4>
+                                      </div>
+                        </div>
+                      </div>
     </div>
-
-    <div class="col-md-offset-4 col-md-4">
-            <h1>
-                or would you like to view Survey results?
-                <a router-link="/survey" href="/survey">
-                    <input type="button" class="btn btn-success" value="See completed surveys here!">
-                </a>
-            </h1>
-        </div>
+</div>

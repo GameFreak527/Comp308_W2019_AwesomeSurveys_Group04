@@ -8,12 +8,7 @@ let questionSchema = mongoose.Schema(
     username : String,
     user_id : String,
     data : String,
-    lifetime : {
-      type: Number,
-      default: "120000",
-      trim: true,
-      required: "Lifetime is required"
-    }
+    lifetime : Number
   },
   {
     collection: "surveyQuestion"
