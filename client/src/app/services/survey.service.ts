@@ -10,6 +10,8 @@ import { Observable } from "rxjs";
 export class SurveyService {
   private answer: SurveyAnswer;
   private question: SurveyQuestion;
+  
+  private authToken: any = null;
 
   private endpoint = "http://localhost:3000/api/survey/";
 
@@ -26,11 +28,13 @@ export class SurveyService {
 
   //Gets Contact List
   public getQuestionList(): Observable<any> {
+    
     return this.http.get<any>(this.endpoint, this.httpOptions);
   }
 
   //creates and adds Question
   public addQuestion(question: SurveyQuestion): Observable<any> {
+    this.loadToken();
     return this.http.post<any>(
       this.endpoint + "addquestion",
       question,
@@ -40,6 +44,7 @@ export class SurveyService {
 
   //creates and adds answer
   public addAnswer(answer: SurveyAnswer): Observable<any> {
+    
     return this.http.post<any>(
       this.endpoint + "addanswer",
       answer,
@@ -49,6 +54,7 @@ export class SurveyService {
 
   //The post request for edit question
   public editQuestion(question: SurveyQuestion): Observable<any> {
+    this.loadToken();
     return this.http.post<any>(
       this.endpoint + "editquestion/" + question._id,
       question,
@@ -58,16 +64,19 @@ export class SurveyService {
 
   //The get request for edit question page
   public getEditQuestionPage(question: SurveyQuestion): Observable<any> {
+    this.loadToken();
     return this.http.get<any>(this.endpoint + question._id, this.httpOptions);
   }
 
   //This Method Deletes Question
   public deleteQuestion(question: SurveyQuestion): Observable<any> {
+    this.loadToken();
     return this.http.get<any>(this.endpoint + "delete/"+ question._id, this.httpOptions);
   }
 
   //This get the specific question from id
   public getSpecificQuestion(question: SurveyQuestion): Observable<any> {
+    
     return this.http.get<any>(
       this.endpoint + "question/" + question._id,
       this.httpOptions
@@ -76,9 +85,17 @@ export class SurveyService {
 
   //Get the result of question and list of answers
   public getResultOfAnswers(question: SurveyQuestion): Observable<any> {
+    
     return this.http.get<any>(
       this.endpoint + "answers/" + question._id,
       this.httpOptions
     );
+  }
+
+  //Sends the token into the header to confirm the identity of user
+  private loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+    this.httpOptions.headers = this.httpOptions.headers.set('Authorization', this.authToken);
   }
 }

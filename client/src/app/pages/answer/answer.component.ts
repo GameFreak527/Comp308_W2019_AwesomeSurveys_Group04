@@ -11,8 +11,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./answer.component.css']
 })
 export class AnswerComponent implements OnInit {
-  private answerObj :SurveyAnswer;
-  private questionObj : SurveyQuestion;
+  public answerObj :SurveyAnswer;
+  public questionObj : SurveyQuestion;
   private user : any;
   private userId :String;
   private username : String;
