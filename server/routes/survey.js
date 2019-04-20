@@ -23,7 +23,7 @@ router.get("/delete/:id", passport.authenticate('jwt',{session:false}),surveyCon
 
 router.post("/editquestion/:id", passport.authenticate('jwt',{session:false}), surveyController.processEditQuestionPage);
 
-router.get('/answers/:id',  surveyController.findAnswersBySpecificQuestion);
+router.get('/answers/:id', passport.authenticate('jwt',{session:false}), surveyController.findAnswersBySpecificQuestion);
 
 router.get("/question/:id", surveyController.findSpecificQuestion);
 

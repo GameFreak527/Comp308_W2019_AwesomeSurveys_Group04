@@ -80,7 +80,8 @@ const routes: Routes = [
   {
     path: "results/:id",
     component: ResultsComponent,
-    data: { title: "Here are the Results!" }
+    data: { title: "Here are the Results!" },
+    canActivate: [AuthGuard]
   },
 
   { path: "", redirectTo: "/home", pathMatch: "full" },

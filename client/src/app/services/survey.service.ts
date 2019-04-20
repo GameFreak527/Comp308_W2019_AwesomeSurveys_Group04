@@ -86,6 +86,7 @@ export class SurveyService {
 
   //Get the result of question and list of answers
   public getResultOfAnswers(question: SurveyQuestion): Observable<any> {
+    this.loadToken();
     return this.http.get<any>(
       this.endpoint + "answers/" + question._id,
       this.httpOptions

@@ -36,7 +36,7 @@
                                           class="btn btn-success"><i class="fas fa-plus"></i> Answer</a>
                                   </td>
   
-                          <td class="text-center" *ngIf="todayDate <= questions.lifetime">
+                          <td class="text-center" *ngIf="questions.user_id == userId && todayDate <= questions.lifetime">
                                       <a routerLink="/results/{{ questions._id }}"
                                           class="btn btn-info"><i class="fas fa-file-export"></i> Result</a>
                                   </td>
