@@ -41,6 +41,9 @@ export class ResultsComponent implements OnInit {
     });
   }
 
+  //Print method to print results in separate window
+  //This implementation is a slightly changed version of this method found online
+  //https://stackoverflow.com/questions/41379274/print-html-template-in-angular-2-ng-print-in-angular-2
   printResults(): void {
     let printContents, popupWin;
     printContents = document.getElementById("print-section").innerHTML;
